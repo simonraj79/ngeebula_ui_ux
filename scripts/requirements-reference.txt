@@ -1,0 +1,4 @@
+# Optional tools for refreshing the committed LTA station snapshot.
+# pandas is already included in the application requirements.
+xlrd==2.0.2
+openpyxl==3.1.5

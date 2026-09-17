@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 650" role="img" aria-labelledby="title desc">
+  <title id="title">Numbered rail maintenance asset schematic</title>
+  <desc id="desc">A train beside a platform with numbered markers for train doors, wheels and brakes, rails, points, signals, power, drainage pumps, and platform doors.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#102a43"/>
+      <stop offset="1" stop-color="#091827"/>
+    </linearGradient>
+    <linearGradient id="train" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d9e8f5"/>
+      <stop offset="0.68" stop-color="#f6fbff"/>
+      <stop offset="1" stop-color="#bdd6e8"/>
+    </linearGradient>
+    <linearGradient id="platform" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f4e67"/>
+      <stop offset="1" stop-color="#1d3448"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#000" flood-opacity=".32"/>
+    </filter>
+    <style>
+      .outline{stroke:#79a9c9;stroke-width:4;stroke-linejoin:round}
+      .detail{stroke:#376681;stroke-width:4;stroke-linecap:round;fill:none}
+      .label{font:700 20px 'Segoe UI',Arial,sans-serif;fill:#dbeeff;letter-spacing:.2px}
+      .muted{font:600 17px 'Segoe UI',Arial,sans-serif;fill:#9ebbd0;letter-spacing:1.4px}
+      .marker .halo{fill:#0d2235;stroke:#8fbad6;stroke-width:4}
+      .marker .dot{fill:#2f80ed}
+      .marker .num{font:800 22px 'Segoe UI',Arial,sans-serif;fill:#fff;text-anchor:middle;dominant-baseline:central}
+      .marker.selected .halo{fill:#173f33;stroke:#73e2ad;stroke-width:7}
+      .marker.selected .dot{fill:#16a66a}
+    </style>
+  </defs>
+
+  <rect width="1400" height="650" rx="28" fill="url(#sky)"/>
+  <path d="M0 490H1400V650H0Z" fill="#07131f"/>
+  <text x="46" y="55" class="muted">MAINTENANCE ASSET GUIDE · SCHEMATIC, NOT A LIVE MAP</text>
+
+  <!-- Power substation and overhead supply -->
+  <g filter="url(#shadow)">
+    <rect x="48" y="120" width="118" height="155" rx="10" fill="#17344a" class="outline"/>
+    <path d="M80 246v-68h54v68M107 178v-37M91 141h32" class="detail"/>
+    <path d="M166 155H320M214 155v68M274 155v68" class="detail"/>
+  </g>
+
+  <!-- Train body -->
+  <g filter="url(#shadow)">
+    <path d="M196 172Q196 126 246 117H795Q874 117 925 185L950 219V418H196Z" fill="url(#train)" class="outline"/>
+    <path d="M222 220H914" stroke="#d94343" stroke-width="15"/>
+    <path d="M245 147h486v57H245Z" fill="#163a53" rx="8"/>
+    <path d="M754 147h82q41 9 66 57H754Z" fill="#163a53"/>
+    <path d="M370 235v183M514 235v183M664 235v183M808 235v183" class="detail"/>
+    <rect x="386" y="249" width="112" height="169" rx="7" fill="#b8d4e5" stroke="#376681" stroke-width="4"/>
+    <path d="M442 249v169" class="detail"/>
+    <rect x="680" y="249" width="112" height="169" rx="7" fill="#b8d4e5" stroke="#376681" stroke-width="4"/>
+    <path d="M736 249v169" class="detail"/>
+    <circle cx="340" cy="431" r="46" fill="#102333" stroke="#9ec0d5" stroke-width="8"/>
+    <circle cx="340" cy="431" r="17" fill="#5e8198"/>
+    <circle cx="790" cy="431" r="46" fill="#102333" stroke="#9ec0d5" stroke-width="8"/>
+    <circle cx="790" cy="431" r="17" fill="#5e8198"/>
+  </g>
+
+  <!-- Rails and point -->
+  <g>
+    <path d="M60 515H1340M60 572H1340" stroke="#91afc3" stroke-width="10"/>
+    <path d="M90 490v108M165 490v108M240 490v108M315 490v108M390 490v108M465 490v108M540 490v108M615 490v108M690 490v108M765 490v108M840 490v108M915 490v108M990 490v108M1065 490v108M1140 490v108M1215 490v108M1290 490v108" stroke="#3d5c70" stroke-width="15"/>
+    <path d="M660 572Q850 572 1020 632" stroke="#91afc3" stroke-width="10" fill="none"/>
+    <path d="M660 515Q850 515 1045 575" stroke="#91afc3" stroke-width="10" fill="none"/>
+  </g>
+
+  <!-- Signal -->
+  <g filter="url(#shadow)">
+    <path d="M1004 443v-201h70v201M982 443h114" class="detail"/>
+    <rect x="992" y="111" width="94" height="145" rx="38" fill="#152b3c" class="outline"/>
+    <circle cx="1039" cy="153" r="20" fill="#f05b61"/>
+    <circle cx="1039" cy="210" r="20" fill="#efc84a"/>
+  </g>
+
+  <!-- Platform and platform doors -->
+  <g filter="url(#shadow)">
+    <path d="M1114 172H1360V476H1114Z" fill="url(#platform)" class="outline"/>
+    <path d="M1135 205h95v230h-95zM1244 205h95v230h-95z" fill="#14364d" stroke="#7fa9c4" stroke-width="4"/>
+    <path d="M1182 205v230M1291 205v230" class="detail"/>
+    <path d="M1090 476h290v43h-290z" fill="#e4b949"/>
+    <path d="M1108 489h254" stroke="#192d3d" stroke-width="5" stroke-dasharray="18 13"/>
+  </g>
+
+  <!-- Drainage sump -->
+  <g filter="url(#shadow)">
+    <path d="M1120 548h156l-15 70h-126z" fill="#123d50" stroke="#6bbbd0" stroke-width="4"/>
+    <path d="M1142 578q22-18 44 0t44 0" stroke="#64cfe2" stroke-width="6" fill="none"/>
+    <circle cx="1250" cy="571" r="15" fill="#6bbbd0"/>
+    <path d="M1250 556v-28h66" class="detail"/>
+  </g>
+
+  <!-- Numbered markers -->
+  <g id="marker-train_doors" class="marker" transform="translate(548 278)"><circle class="halo" r="30"/><circle class="dot" r="23"/><text class="num" y="1">1</text></g>
+  <rect x="505" y="302" width="160" height="39" rx="12" fill="#102a43" opacity=".94"/>
+  <text x="518" y="330" class="label">Train doors</text>
+  <g id="marker-wheels_brakes" class="marker" transform="translate(788 431)"><circle class="halo" r="30"/><circle class="dot" r="23"/><text class="num" y="1">2</text></g>
+  <text x="716" y="485" class="label">Wheels &amp; brakes</text>
+  <g id="marker-rails" class="marker" transform="translate(420 545)"><circle class="halo" r="30"/><circle class="dot" r="23"/><text class="num" y="1">3</text></g>
+  <text x="384" y="625" class="label">Rails</text>
+  <g id="marker-points" class="marker" transform="translate(860 568)"><circle class="halo" r="30"/><circle class="dot" r="23"/><text class="num" y="1">4</text></g>
+  <text x="830" y="625" class="label">Points</text>
+  <g id="marker-signals" class="marker" transform="translate(1039 95)"><circle class="halo" r="30"/><circle class="dot" r="23"/><text class="num" y="1">5</text></g>
+  <text x="1090" y="102" class="label">Signals</text>
+  <g id="marker-power" class="marker" transform="translate(105 102)"><circle class="halo" r="30"/><circle class="dot" r="23"/><text class="num" y="1">6</text></g>
+  <text x="43" y="315" class="label">Power</text>
+  <g id="marker-drainage_pumps" class="marker" transform="translate(1300 581)"><circle class="halo" r="30"/><circle class="dot" r="23"/><text class="num" y="1">7</text></g>
+  <text x="1072" y="635" class="label">Drainage &amp; pumps</text>
+  <g id="marker-platform_doors" class="marker" transform="translate(1341 164)"><circle class="halo" r="30"/><circle class="dot" r="23"/><text class="num" y="1">8</text></g>
+  <text x="1157" y="146" class="label">Platform doors</text>
+</svg>

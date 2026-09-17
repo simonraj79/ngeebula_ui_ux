@@ -1,0 +1,18 @@
+# Single shared demo: SQLite resets when the free instance restarts.
+services:
+  - type: web
+    name: ngeebula-ui-ux
+    runtime: python
+    region: singapore
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements-lock.txt
+    startCommand: python scripts/start_render.py
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: PYTHONUNBUFFERED
+        value: "1"

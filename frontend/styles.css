@@ -1,0 +1,199 @@
+:root {
+  --ops-border: #2a4762;
+  --ops-muted: #b4c6d8;
+  --ops-focus: #77b7ff;
+}
+
+html,
+body,
+[data-testid="stAppViewContainer"],
+.stApp {
+  font-family: Inter, "Segoe UI", sans-serif;
+}
+
+[data-testid="stHeader"] {
+  background: transparent;
+}
+
+[data-testid="stMainBlockContainer"] {
+  max-width: 1500px;
+  padding: 1.5rem clamp(1rem, 2.5vw, 2.5rem) 4rem;
+}
+
+[data-testid="stSidebar"] {
+  border-right: 1px solid var(--ops-border);
+}
+
+[data-testid="stSidebar"] > div:first-child {
+  padding-top: 1.25rem;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label {
+  border-radius: 0.5rem;
+  margin-bottom: 0.25rem;
+  min-height: 44px;
+  padding: 0.55rem 0.65rem;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) {
+  background: rgba(47, 128, 237, 0.16);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+[data-testid="stSelectbox"] label p,
+[data-testid="stTextInput"] label p,
+[data-testid="stTextArea"] label p,
+[data-testid="stNumberInput"] label p,
+[data-testid="stDateInput"] label p,
+[data-testid="stTimeInput"] label p,
+[data-testid="stMultiSelect"] label p,
+[data-testid="stRadio"] label p,
+[data-testid="stCheckbox"] label p {
+  color: var(--ops-muted);
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+[data-baseweb="select"] > div,
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea,
+[data-testid="stNumberInput"] input,
+[data-testid="stDateInput"] input,
+[data-testid="stTimeInput"] input {
+  border-color: #3b5c79;
+  min-height: 44px;
+}
+
+[data-testid="stTextArea"] textarea {
+  line-height: 1.55;
+  padding: 0.7rem 0.8rem;
+}
+
+[data-baseweb="select"] > div:focus-within,
+[data-testid="stTextInput"] input:focus,
+[data-testid="stTextArea"] textarea:focus,
+[data-testid="stNumberInput"] input:focus,
+[data-testid="stDateInput"] input:focus,
+[data-testid="stTimeInput"] input:focus {
+  border-color: var(--ops-focus) !important;
+  box-shadow: 0 0 0 2px rgba(119, 183, 255, 0.25) !important;
+}
+
+.stButton button,
+[data-testid="stFormSubmitButton"] button {
+  border-radius: 0.5rem;
+  font-weight: 700;
+  min-height: 44px;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.stButton button:focus-visible,
+[data-testid="stFormSubmitButton"] button:focus-visible,
+[data-testid="stSidebar"] [role="radiogroup"] label:focus-within {
+  outline: 3px solid rgba(119, 183, 255, 0.45);
+  outline-offset: 2px;
+}
+
+.stButton button:disabled,
+[data-testid="stFormSubmitButton"] button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] {
+  border-color: var(--ops-border);
+  border-radius: 0.75rem;
+}
+
+[data-testid="stMetric"] {
+  border: 1px solid var(--ops-border);
+  border-radius: 0.65rem;
+  min-height: 92px;
+  padding: 0.75rem 0.9rem;
+}
+
+[data-testid="stMetricLabel"] p,
+.stCaption {
+  color: var(--ops-muted);
+}
+
+/* Textual job facts must remain readable instead of being ellipsized. */
+.st-key-job_summary [data-testid="stMetricValue"],
+.st-key-job_summary [data-testid="stMetricValue"] > div {
+  font-size: 1.5rem;
+  line-height: 1.35;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+[data-testid="stTabs"] [data-baseweb="tab-list"] {
+  border-bottom: 1px solid var(--ops-border);
+  gap: 0.4rem;
+}
+
+[data-testid="stTabs"] [data-baseweb="tab"] {
+  min-height: 44px;
+}
+
+[data-testid="stTabs"] [aria-selected="true"] {
+  color: #ffffff;
+  font-weight: 750;
+}
+
+[data-testid="stExpander"],
+[data-testid="stDataFrame"],
+[data-testid="stPlotlyChart"] {
+  border: 1px solid var(--ops-border);
+  border-radius: 0.65rem;
+  overflow: hidden;
+}
+
+[data-testid="stTable"] {
+  border: 1px solid var(--ops-border);
+  border-radius: 0.65rem;
+  overflow-x: auto;
+}
+
+[data-testid="stPlotlyChart"] {
+  padding: 0.2rem 0.35rem 0;
+}
+
+[data-testid="stAlert"] {
+  border-color: #3a5d7b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 800px) {
+  [data-testid="stMainBlockContainer"] h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  [data-testid="stMainBlockContainer"] {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  [data-testid="stMetric"] {
+    min-height: auto;
+  }
+
+  /* Keep the eight labelled asset choices scannable on a phone. */
+  .st-key-asset_choices [data-testid="stHorizontalBlock"] {
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+  .st-key-asset_choices [data-testid="stColumn"] {
+    flex: 1 1 calc(50% - 0.65rem) !important;
+    min-width: calc(50% - 0.65rem) !important;
+    width: calc(50% - 0.65rem) !important;
+  }
+}

@@ -1,0 +1,7 @@
+fastapi==0.141.1
+uvicorn==0.53.0
+SQLAlchemy==2.0.54
+pydantic==2.13.5
+google-genai==2.24.0
+python-dotenv==1.2.3
+ortools==9.15.6755
