@@ -304,7 +304,19 @@ export const ps1Api = {
         `No completed Scenario ${scenario} run is available in this browser.`,
         404,
       );
-    return JSON.parse(saved) as PlanBundle;
+    const bundle = JSON.parse(saved) as PlanBundle;
+    if (bundle.run_id) {
+      try {
+        await request<RunResponse>(`/ps1/runs/${encodeURIComponent(bundle.run_id)}`);
+      } catch (error) {
+        if (error instanceof ApiError && error.status === 404) {
+          sessionStorage.removeItem(cacheKey(activeDatasetId(), scenario));
+          throw new ApiError("This plan expired after a restart or a newer run. Generate a new plan to review and export it.", 404);
+        }
+        throw error;
+      }
+    }
+    return bundle;
   },
   generatePlan: async (
     scenario: ScenarioId,

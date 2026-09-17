@@ -399,6 +399,7 @@ function NetworkMap({
   return (
     <div
       className="network-map"
+      tabIndex={0}
       role="img"
       aria-label="Alpha ALP and Beta BET lines meet through the H01 H02 interchange tunnel sector."
     >

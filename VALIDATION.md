@@ -14,7 +14,15 @@ Verified 17 September 2026 on Windows, Python 3.12 and Node 24. The current prim
 - Direct browser navigation and reload of /schedule also pass after correcting an API-prefix collision. Browser review caught and corrected hardcoded default-dataset use after import, lexicographic week ordering, wrong access filters, and scenario-review navigation. Eight-file import now drives the actual non-default dataset run; 192 placements group into 54 Gantt rows, and filtering C shows 43 activities/157 placements.
 - Temporary capacity changes use dataset-backed location/week controls and show baseline changes. A malformed ZIP fails inline. Mobile 375-pixel review found no page-level overflow.
 - Maintenance create → propose → approve → In progress was exercised only on a disposable local database with isolated credentials; no public/live maintenance record was changed.
-- Render Blueprint validation passed and the existing service settings now use the React build script and /healthz. Live deployment verification is recorded after release.
+- Render Blueprint validation passed and the existing service settings now use the React build script and /healthz. The code release 00222a3 became live on Render on 17 September 2026 at 23:14 SGT; public verification below passed.
+
+## Public deployment verification
+
+The React code release `00222a3` deployed successfully to [Render](https://ngeebula-ui-ux.onrender.com/) (deployment `dep-dam06fjl550s73faemq0`). Public checks verified /healthz, the exact 54-activity dataset, all six browser routes including direct /schedule navigation, and desktop/mobile About and Overview with no JavaScript errors. A malformed ZIP returned 422. No public maintenance jobs were created or changed.
+
+All three scenarios ran on the free hosted instance with a 20-second budget. Their exact three-file CSV ZIPs were downloaded and independently revalidated through /ps1/validate with the separately downloaded physical-night witness. Every run covered all 54 activities with complete local checks and zero hard violations. Hosted objectives were A 316.4, B 877.0 and C 316.4. Hosted B used 153 access rows, 111 ECLO rows and 46 excess possessions, with zero planned-date overrun. Its shorter search progress than the local saved B artifact (862.0) illustrates the hardware/time-budget dependence of this heuristic; it is not a deterministic score guarantee across hosts.
+
+A final browser-session refinement clears an expired saved run after a server restart and allows new generation without stale-baseline errors. This was tested on a disposable local server. The network diagram is keyboard-scrollable; mobile navigation hides closed controls from focus. Source files retain byte-identical hashes in the Git index using a scoped .gitattributes rule. The vendored SVG's original trailing whitespace is intentionally preserved; application-source diff checks pass.
 
 ## Reproducible submitted instances
 

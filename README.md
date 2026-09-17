@@ -41,6 +41,8 @@ flowchart LR
 
 Full workload, earliest starts, spans, buffers, Live mirroring/crossover, legal co-sharing, workfronts and weekly allocations are checked. The organisers' **official trackaccess validator is not in the linked pack**. Local checks are not official certification or operational approval. The planner returns a best found plan without proving global optimality. Runs beyond the nominal horizon explicitly assume flat nominal capacities continue; this interpretation needs organiser confirmation. [Rule implementation and limits](docs/PS1_BACKEND_GAP_AUDIT.md).
 
+Committed candidate submissions: [Scenario A](submissions/ps1/A/), [Scenario B](submissions/ps1/B/), [Scenario C](submissions/ps1/C/), with [separate validation evidence](submissions/ps1/reports/). Reproduce them with `python scripts/generate_ps1_submission.py`. Runtime incumbents can differ with the time budget and host speed.
+
 ## Run locally
 
 Use Python 3.12 and Node.js 22.12+ (Node 24 tested), from the root:

@@ -71,3 +71,7 @@ Against the isolated production build on port 8012:
 - submission download enabled only for the complete locally feasible run;
 - the 375 px Plan page had no page-level horizontal overflow;
 - the Work requests page exposed all eight asset choices, and selecting Rails changed location entry to the station-and-serving-line control without creating a job.
+
+## Coordinating review corrections
+
+The final root review fixed direct /schedule navigation colliding with the API prefix, an explicit Scenario accessible name, mobile grid min-width overflow, and focusable hidden mobile navigation. Browser checks confirmed 192 exact Scenario A rows, a three-CSV download, correct scenario navigation and no page overflow at 375 pixels. Expired cached runs now clear and prompt regeneration instead of repeatedly submitting a stale baseline.
