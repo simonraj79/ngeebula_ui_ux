@@ -33,6 +33,8 @@ See the [documentation index](docs/README.md) and [public GitHub preparation gui
 
 ## Render demo
 
+Open the [hosted Ngeebula dashboard](https://ngeebula-ui-ux.onrender.com).
+
 [Deployment and hosting guide](docs/RENDER_DEPLOYMENT.md). The free Render service runs the public Streamlit dashboard and an internal FastAPI process. It starts with the original dummy roster and an empty job queue. Shared demo work resets on restart; this is not a persistent operational deployment.
 
 ## Daily workflow

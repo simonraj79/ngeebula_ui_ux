@@ -12,6 +12,13 @@ flowchart LR
     API -->|Optional server credential| AI[Gemini]
 ```
 
+## Published service
+
+- [Open the dashboard](https://ngeebula-ui-ux.onrender.com)
+- [Render service management](https://dashboard.render.com/web/srv-dalupmlbedkc738crblg)
+- Source: `main` in the GitHub repository linked above, with automatic deployment enabled.
+- Service created directly through Render; the committed Blueprint documents the equivalent configuration for a separate installation.
+
 ## Runtime
 
 - Build: `pip install -r requirements-lock.txt`.
