@@ -757,6 +757,15 @@ def test_ai_setup_does_not_offer_a_false_connection_test_without_a_key(ui):
     assert "validated catalog assessment" not in " ".join(item.value for item in ui.success)
 
 
+def test_hosted_demo_fixes_backend_url_and_explains_server_owned_key(ui, monkeypatch):
+    monkeypatch.setenv("NGEEBULA_HOSTED", "1")
+    navigate(ui, "AI setup")
+    assert "Render's Environment settings" in visible_copy(ui)
+    assert not any(widget.label == "Backend server URL" for widget in ui.text_input)
+    assert not any("replace-with-your-key" in item.value for item in ui.code)
+    assert "Shared demo" in visible_copy(ui)
+
+
 def test_utility_navigation_clears_main_selection_and_allows_reopening_same_page(ui):
     navigate(ui, "1 · Requests")
 

@@ -1501,18 +1501,24 @@ def render_ai_setup(client: ApiClient, status: dict, is_live: bool) -> None:
         with facts[1]:
             st.caption("MODEL")
             st.write(f"**{status.get('model') or 'gemini-3.8-flash'}**")
-        dotenv_path = APP_DIR.parent / ".env"
-        st.write("Add the key to the root `.env` file. Keep the key after the equals sign on one line:")
-        st.code(f"File: {dotenv_path}\nGEMINI_API_KEY=replace-with-your-key", language="text", wrap_lines=True)
-        st.caption(
-            "Save the file, choose Refresh snapshot in the sidebar, then run the connection test. "
-            "The backend reads `.env` for each AI request, so no restart is required."
-        )
-        with st.expander("Alternative secure-store setup"):
-            st.write(
-                "A Windows secure-store script remains available in `scripts/configure-gemini.ps1`. "
-                "An operating-system environment value takes precedence over `.env`, which takes precedence over the secure store."
+        if os.getenv("NGEEBULA_HOSTED") == "1":
+            st.caption(
+                "The service owner manages GEMINI_API_KEY in Render's Environment settings. "
+                "Visitors do not need to enter a key here. Never put credentials in a maintenance request."
             )
+        else:
+            dotenv_path = APP_DIR.parent / ".env"
+            st.write("Add the key to the root `.env` file. Keep the key after the equals sign on one line:")
+            st.code(f"File: {dotenv_path}\nGEMINI_API_KEY=replace-with-your-key", language="text", wrap_lines=True)
+            st.caption(
+                "Save the file, choose Refresh snapshot in the sidebar, then run the connection test. "
+                "The backend reads `.env` for each AI request, so no restart is required."
+            )
+            with st.expander("Alternative secure-store setup"):
+                st.write(
+                    "A Windows secure-store script remains available in `scripts/configure-gemini.ps1`. "
+                    "An operating-system environment value takes precedence over `.env`, which takes precedence over the secure store."
+                )
         st.caption("The connection test sends a synthetic maintenance description and catalog context. It does not send saved jobs or staff records.")
 
     if st.button("Test Gemini connection", type="primary", key="test_ai_connection", disabled=not configured):

@@ -144,3 +144,10 @@ All 19 focused Gemini tests and the full 89-test suite pass after that refinemen
 - Organized historical plans under `docs/plans`, added a documentation index, `.gitignore`, `.gitattributes`, publication audit and deployment guide. All local Markdown links resolve.
 - Full suite: **167 passed**, with two upstream deprecation warnings. Backend/frontend/scripts compile successfully. Supervisor tests check loopback API binding, startup failure and sibling shutdown without running live services.
 - `render.yaml` validates against Render's official JSON schema. The configured deployment key was verified without displaying it. Git publication audit checked 71 candidate files and found no private paths or known credential patterns. Deployment verification is recorded separately once the service is live.
+
+### Hosted verification (17 September 2026)
+
+- Render reported the Singapore free service live at `https://ngeebula-ui-ux.onrender.com`; `/_stcore/health` returned HTTP 200 and `ok`. The public URL does not expose the internal FastAPI OpenAPI schema.
+- Browser verification loaded the empty shared cockpit and the Gemini configuration from a backend environment variable. One hosted synthetic Gemini 3.8 Flash connection test returned HTTP 200 and passed production catalog validation at 21:41 SGT. No staff records or saved jobs were submitted to the provider.
+- Corrected hosted AI setup instructions to point to Render Environment settings instead of a local Windows/file workflow. The 27 affected frontend/publication/launcher tests passed; an additional hosted-mode regression passed, confirming that visitors cannot edit the internal API URL and no key-entry template appears.
+- Both API keys remain absent from Git; the original dummy roster is included. The Render deployment key is not present in the hosted app environment.
