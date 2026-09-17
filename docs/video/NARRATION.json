@@ -1,0 +1,127 @@
+[
+  {
+    "id": 1,
+    "title": "Hook",
+    "start": 0,
+    "duration": 8,
+    "narration": "Every night, approved preventive work competes for a narrow window. Then a corrective repair arrives, with a deadline.",
+    "captionChunks": [
+      "Every night, approved preventive work competes for a narrow window.",
+      "Then a corrective repair arrives, with a deadline."
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Singapore context",
+    "start": 8,
+    "duration": 11,
+    "narration": "CNA reported one three-hour rail-replacement window. SMRT told The Straits Times: about a thousand workers, across a hundred and fifty worksites, nightly.",
+    "captionChunks": [
+      "CNA reported one three-hour rail-replacement window.",
+      "SMRT told The Straits Times: about a thousand workers,",
+      "across a hundred and fifty worksites, nightly."
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Cockpit",
+    "start": 19,
+    "duration": 9,
+    "narration": "Ngeebula turns that planning challenge into one local cockpit, showing requests needing attention, planning, approval, or execution.",
+    "captionChunks": [
+      "Ngeebula turns that planning challenge into one local cockpit,",
+      "showing requests needing attention, planning, approval, or execution."
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Eight assets",
+    "start": 28,
+    "duration": 11,
+    "narration": "Add work through eight familiar shortcuts: train doors, wheels and brakes, rails, points, signals, power, drainage pumps, and platform doors.",
+    "captionChunks": [
+      "Add work through eight familiar shortcuts:",
+      "train doors, wheels and brakes, rails, and points,",
+      "signals, power, drainage pumps, and platform doors."
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Station first",
+    "start": 39,
+    "duration": 11,
+    "narration": "Next, locate station work by name or code. A single serving line fills automatically; interchanges require an explicit line choice.",
+    "captionChunks": [
+      "Next, locate station work by name or code.",
+      "A single serving line fills automatically;",
+      "interchanges require an explicit line choice."
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Review requirements",
+    "start": 50,
+    "duration": 11,
+    "narration": "Review the repair, duration, required skills, crew size, priority, deadline, and location. Clear station-line contradictions are rejected before creation.",
+    "captionChunks": [
+      "Review the repair, duration, required skills, crew size,",
+      "priority, deadline, and location.",
+      "Clear station-line contradictions are rejected before creation."
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Proposal and Gantt",
+    "start": 61,
+    "duration": 14,
+    "narration": "Generate a modeled proposal. OR-Tools checks qualified crew, shared time, deadlines, location conflicts, and approved commitments together. The Gantt and exact-value table show who works when; conflicts stay visible.",
+    "captionChunks": [
+      "Generate a modeled proposal.",
+      "OR-Tools checks qualified crew, shared time, deadlines,",
+      "location conflicts, and approved commitments together.",
+      "The Gantt and exact-value table show who works when;",
+      "conflicts stay visible."
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Human approval and execution",
+    "start": 75,
+    "duration": 12,
+    "narration": "A proposal never approves itself. The maintenance chief reviews it, records a decision, and approves execution. Controlled status updates and audit history follow the work.",
+    "captionChunks": [
+      "A proposal never approves itself.",
+      "The maintenance chief reviews it, records a decision,",
+      "and approves execution.",
+      "Controlled status updates and audit history follow the work."
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Synthetic comparison",
+    "start": 87,
+    "duration": 14,
+    "narration": "In the labelled synthetic specialist case, requested slots place one of two repairs. First available also places one of two. Joint planning finds two of two while preserving the same fixed inspection.",
+    "captionChunks": [
+      "In the labelled synthetic specialist case,",
+      "requested slots place one of two repairs.",
+      "First available also places one of two.",
+      "Joint planning finds two of two",
+      "while preserving the same fixed inspection."
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Optional AI and call to action",
+    "start": 101,
+    "duration": 13,
+    "narration": "Optional validated Gemini can interpret free text, while core rules work without it. Ngeebula keeps constraint checks clear, proposals reviewable, and approval human, from first request through execution.",
+    "captionChunks": [
+      "Optional validated Gemini can interpret free text,",
+      "while core rules work without it.",
+      "Ngeebula keeps constraint checks clear,",
+      "proposals reviewable, and approval human,",
+      "from first request through execution."
+    ]
+  }
+]

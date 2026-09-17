@@ -1,0 +1,159 @@
+1
+00:00:00,630 --> 00:00:02,940
+Every night, approved preventive work competes for a
+
+2
+00:00:02,941 --> 00:00:05,928
+narrow window. Then a corrective repair arrives,
+
+3
+00:00:05,929 --> 00:00:06,964
+with a deadline.
+
+4
+00:00:08,632 --> 00:00:11,486
+CNA reported one three-hour rail-replacement window.
+
+5
+00:00:11,973 --> 00:00:13,797
+SMRT told The Straits Times:
+
+6
+00:00:13,798 --> 00:00:16,105
+about a thousand workers, across a hundred and
+
+7
+00:00:16,106 --> 00:00:17,944
+fifty worksites, nightly.
+
+8
+00:00:19,634 --> 00:00:21,884
+Ngeebula turns that planning challenge into one local
+
+9
+00:00:21,885 --> 00:00:24,438
+cockpit, showing requests needing attention,
+
+10
+00:00:24,439 --> 00:00:26,941
+planning, approval, or execution.
+
+11
+00:00:28,629 --> 00:00:30,663
+Add work through eight familiar shortcuts:
+
+12
+00:00:30,664 --> 00:00:32,927
+train doors, wheels and brakes,
+
+13
+00:00:32,928 --> 00:00:36,693
+rails, points, signals, power, drainage pumps,
+
+14
+00:00:36,694 --> 00:00:37,969
+and platform doors.
+
+15
+00:00:39,646 --> 00:00:42,821
+Next, locate station work by name or code.
+
+16
+00:00:43,427 --> 00:00:45,938
+A single serving line fills automatically;
+
+17
+00:00:45,939 --> 00:00:48,824
+interchanges require an explicit line choice.
+
+18
+00:00:50,625 --> 00:00:53,486
+Review the repair, duration, required skills,
+
+19
+00:00:53,487 --> 00:00:56,739
+crew size, priority, deadline, and location.
+
+20
+00:00:57,164 --> 00:01:00,002
+Clear station-line contradictions are rejected before creation.
+
+21
+00:01:01,627 --> 00:01:03,206
+Generate a modeled proposal.
+
+22
+00:01:03,655 --> 00:01:06,084
+OR-Tools checks qualified crew, shared time,
+
+23
+00:01:06,085 --> 00:01:09,647
+deadlines, location conflicts, and approved commitments together.
+
+24
+00:01:10,099 --> 00:01:12,082
+The Gantt and exact-value table show who works
+
+25
+00:01:12,083 --> 00:01:13,996
+when; conflicts stay visible.
+
+26
+00:01:15,632 --> 00:01:17,604
+A proposal never approves itself.
+
+27
+00:01:18,090 --> 00:01:19,792
+The maintenance chief reviews it,
+
+28
+00:01:19,793 --> 00:01:22,483
+records a decision, and approves execution.
+
+29
+00:01:22,972 --> 00:01:25,363
+Controlled status updates and audit history follow the
+
+30
+00:01:25,364 --> 00:01:25,968
+work.
+
+31
+00:01:27,641 --> 00:01:30,010
+In the labelled synthetic specialist case,
+
+32
+00:01:30,018 --> 00:01:32,671
+requested slots place one of two repairs.
+
+33
+00:01:33,235 --> 00:01:35,625
+First available also places one of two.
+
+34
+00:01:36,192 --> 00:01:38,316
+Joint planning finds two of two while preserving
+
+35
+00:01:38,317 --> 00:01:39,875
+the same fixed inspection.
+
+36
+00:01:41,633 --> 00:01:44,283
+Optional validated Gemini can interpret free text,
+
+37
+00:01:44,284 --> 00:01:45,993
+while core rules work without it.
+
+38
+00:01:46,485 --> 00:01:48,571
+Ngeebula keeps constraint checks clear,
+
+39
+00:01:48,580 --> 00:01:51,001
+proposals reviewable, and approval human,
+
+40
+00:01:51,002 --> 00:01:52,950
+from first request through execution.

@@ -2,11 +2,23 @@
 
 ## Product and scope
 
-Ngeebula is a local maintenance-planning prototype for fitting corrective repairs around approved preventive commitments. Keep the workflow approachable for a maintenance chief: select an asset, identify the work location, review requirements, generate a proposal, then approve. Active incident response and decisions about safe operation are outside this prototype.
+Ngeebula's primary workflow is the supplied NebulaX PS1 railway track-access planning problem: inspect the demand book, choose scenario A/B/C, generate a complete possession plan, review local validation and trade-offs, and export the three submission CSVs. The separate maintenance-request workflow fits corrective repairs around approved commitments. Active incident response and decisions about safe operation remain outside this prototype.
 
-The frontend is native Streamlit with pandas/Plotly and local SVG illustrations. The backend is FastAPI, SQLAlchemy/SQLite and OR-Tools CP-SAT. Preserve this stack unless the user asks to change it. Do not introduce a separate web framework or a decorative 3D model for a task that is clearer with labelled controls.
+The user explicitly requested React on 17 September 2026. The primary frontend is React/TypeScript in `web/`; Streamlit in `frontend/` is the legacy interface. The backend remains FastAPI, SQLAlchemy/SQLite and OR-Tools. Preserve existing records while migrating presentation. Use labelled SVG network diagrams and accessible charts instead of decorative 3D controls.
+
+## PS1 data and validation
+
+- Preserve the supplied eight CSV files byte-for-byte in `data/ps1`, with upstream commit and hashes. Public headers saying nine files conflict with the actual eight-file instance; validate the actual schema, not that count typo.
+- Keep Alpha/Beta, H01/H02 and supplied location IDs intact. Do not relabel the abstract challenge network as actual Singapore lines/stations or mix it with the legacy dummy roster.
+- Account for every activity and its full workload. Partial, timed-out or infeasible output is not a feasible complete schedule. Never silently drop demand to improve a score.
+- Respect scenario-specific supply, date and ECLO rules, span/platform occupancy, buffers, Live mirroring/crossover, co-sharing, weekly allocations and workfronts. Document ambiguities against the source brief.
+- The public pack does not contain the referenced official `trackaccess` validator. Label application checks as local validation until the official tool is available and actually run. Do not call a local pass official certification or operational approval.
+- Uploaded instances and capacity-change simulations must be isolated from the shipped source data and live maintenance jobs. Show changed assumptions, displaced work and validation results.
+- Keep Gemini optional and outside the scheduling/validation authority. Never send uploaded demand books to an AI service implicitly.
 
 ## UX rules from user reviews
+
+Start PS1 in the demand overview with dataset-backed scenario/location/week choices. Imported datasets must remain active across navigation and generation; scope saved plans by dataset and scenario. Gantt weeks must sort numerically and preserve empty weeks. The following repair-specific rules apply to the secondary maintenance workflow.
 
 - Start with the cockpit and eight curated asset shortcuts. Keep the full catalog and manual requirements secondary.
 - Use station-first location selection. Search by station name/code and derive a single serving line automatically. At an interchange, explicitly ask which serving line the work concerns; never default silently to the first line.
@@ -25,13 +37,13 @@ The frontend is native Streamlit with pandas/Plotly and local SVG illustrations.
 
 ## Implementation and validation
 
-- Read the applicable code and tests before editing. Check for existing user changes; this working copy may not have Git metadata.
+- Read the applicable code and tests before editing. Check for existing user changes; check the current branch, remote and user changes.
 - Use `.venv\Scripts\python.exe`. From the repository root, run relevant pytest cases and `python -m compileall -q backend frontend`. Broaden to the full suite for changes crossing the UI/API workflow.
 - Tests must use disposable databases and isolated credential paths (`NGEEBULA_ENV_FILE`, `NGEEBULA_GEMINI_KEY_FILE`, temporary `LOCALAPPDATA`); never consume the user's API key or mutate live jobs.
 - Preserve qualification checks, fixed/approved commitments, valid lifecycle transitions, reasoned overrides, UTC storage and SGT presentation. A proposal does not approve execution.
 - Gemini is optional. Explicit catalog choices stay authoritative and bypass free-text AI classification. Core rules and scheduling work without Gemini. A fallback result must not be described as a successful Gemini call.
 - Never print `.env`, API keys, raw provider exceptions or credential values. Use redacted status routes. Local `.env` is ignored by Git and read by the backend on demand.
-- Review screenshots and actual browser behavior for UI changes. Automated Streamlit tests do not establish visual usability. Never create, modify or delete the user's live work merely for testing.
+- Review screenshots and actual browser behavior for UI changes. Automated tests do not establish visual usability. Build React with `npm --prefix web run build` and verify real browser imports, scenario selection, exports and narrow-screen behavior. Never create, modify or delete the user's live work merely for testing.
 - Backend changes need a controlled restart of the matching local process; `.env` changes do not. Verify process identity before stopping it. Start background Windows services hidden.
 - Coordinate delegated edits by file ownership. Evaluate agents' results and rerun the affected integration paths before reporting completion.
 

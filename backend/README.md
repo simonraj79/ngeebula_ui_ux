@@ -1,6 +1,26 @@
-# Maintenance API
+# Ngeebula API
 
-FastAPI, SQLAlchemy/SQLite, OR-Tools CP-SAT, and optional Google GenAI. See the root TECH_STACK.md for the preserved architecture.
+FastAPI, SQLAlchemy/SQLite, OR-Tools CP-SAT, and optional Google GenAI. See the root TECH_STACK.md for the current React and PS1 architecture.
+
+
+## PS1 and React (current primary workflow)
+
+Run from the repository root with `python -m uvicorn backend.main:app --port 8000`. Build `web/` first to serve the React UI from the same origin.
+
+| Endpoint | Purpose |
+|---|---|
+| GET /healthz | Runtime/frontend/data availability |
+| GET /ps1/dataset?dataset_id=default | Active input, network, audit and source |
+| POST /ps1/datasets/import | Eight UTF-8 CSVs in JSON files mapping or a raw ZIP |
+| POST /ps1/runs | Queue scenario A/B/C with dataset ID, optional baseline and capacity overrides |
+| GET /ps1/runs/{id} | Poll status and locally validated result |
+| GET /ps1/runs/{id}/download | Exact three-CSV ZIP; complete-local-validation gate |
+| GET /ps1/runs/{id}/validation.json | Separate checks, physical-night witness and assumptions |
+| POST /ps1/validate | Validate output rows; closure coverage partial without witness |
+
+Runs/imports are bounded, temporary and isolated from maintenance SQLite. One background worker executes at most four queued/running requests. API schemas at /docs show limits. Inputs are never sent to Gemini. The official organiser validator is not supplied, so local results are not an official pass.
+
+## Retained maintenance API
 
 After installing the root requirements-lock.txt, run from this directory:
 

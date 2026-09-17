@@ -49,6 +49,12 @@ dist/
 build/
 *.egg-info/
 
+# React development and browser verification
+node_modules/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
 # Local server state, logs and downloads
 .run/
 *.log

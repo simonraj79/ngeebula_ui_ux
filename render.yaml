@@ -6,9 +6,9 @@ services:
     region: singapore
     plan: free
     branch: main
-    buildCommand: pip install -r requirements-lock.txt
+    buildCommand: python scripts/build_render.py
     startCommand: python scripts/start_render.py
-    healthCheckPath: /_stcore/health
+    healthCheckPath: /healthz
     envVars:
       - key: GEMINI_MODEL
         value: gemini-3.8-flash

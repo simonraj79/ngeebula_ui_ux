@@ -1,0 +1,122 @@
+{
+  "01_cockpit.png": {
+    "state": "Cockpit with three synthetic local requests",
+    "annotations": {
+      "workflow": [
+        560,
+        180
+      ],
+      "queue": [
+        670,
+        360
+      ],
+      "timeline": [
+        900,
+        700
+      ]
+    }
+  },
+  "02_asset_picker.png": {
+    "state": "Eight curated asset shortcuts",
+    "annotations": {
+      "asset_grid": [
+        920,
+        510
+      ],
+      "safety_scope": [
+        880,
+        225
+      ]
+    }
+  },
+  "03_repair_details.png": {
+    "state": "Selected Rails repair with editable observed symptoms",
+    "annotations": {
+      "selected_repair": [
+        900,
+        270
+      ],
+      "details": [
+        900,
+        500
+      ]
+    }
+  },
+  "04_station_first_clementi.png": {
+    "state": "Station-first Clementi selection derives East West Line",
+    "annotations": {
+      "station": [
+        850,
+        300
+      ],
+      "derived_line": [
+        850,
+        390
+      ],
+      "deadline": [
+        850,
+        590
+      ]
+    }
+  },
+  "05_request_review.png": {
+    "state": "Saved request review queue with requirements and next actions",
+    "annotations": {
+      "queue": [
+        930,
+        575
+      ],
+      "request_summary": [
+        900,
+        825
+      ]
+    }
+  },
+  "06_planning_gantt.png": {
+    "state": "Real CP-SAT proposal and overnight Gantt",
+    "annotations": {
+      "metrics": [
+        900,
+        210
+      ],
+      "gantt": [
+        930,
+        570
+      ],
+      "generate": [
+        380,
+        360
+      ]
+    }
+  },
+  "07_approved_execution.png": {
+    "state": "Approved corrective job ready for controlled execution",
+    "annotations": {
+      "approval_state": [
+        930,
+        300
+      ],
+      "execution_controls": [
+        920,
+        590
+      ],
+      "audit_identity": [
+        290,
+        675
+      ]
+    }
+  },
+  "08_compare_approaches.png": {
+    "state": "Clearly labeled synthetic 2 jobs / 2 engineers comparison results",
+    "annotations": {
+      "synthetic_label": [
+        900,
+        100
+      ],
+      "outcomes": [
+        930,
+        500
+      ]
+    }
+  }
+}

@@ -1,0 +1,282 @@
+[
+  {
+    "text": "Every night, approved preventive work competes for a",
+    "startMs": 630,
+    "endMs": 2940,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "narrow window. Then a corrective repair arrives,",
+    "startMs": 2941,
+    "endMs": 5928,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "with a deadline.",
+    "startMs": 5929,
+    "endMs": 6964,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "CNA reported one three-hour rail-replacement window.",
+    "startMs": 8632,
+    "endMs": 11486,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "SMRT told The Straits Times:",
+    "startMs": 11973,
+    "endMs": 13797,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "about a thousand workers, across a hundred and",
+    "startMs": 13798,
+    "endMs": 16105,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "fifty worksites, nightly.",
+    "startMs": 16106,
+    "endMs": 17944,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "Ngeebula turns that planning challenge into one local",
+    "startMs": 19634,
+    "endMs": 21884,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "cockpit, showing requests needing attention,",
+    "startMs": 21885,
+    "endMs": 24438,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "planning, approval, or execution.",
+    "startMs": 24439,
+    "endMs": 26941,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "Add work through eight familiar shortcuts:",
+    "startMs": 28629,
+    "endMs": 30663,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "train doors, wheels and brakes,",
+    "startMs": 30664,
+    "endMs": 32927,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "rails, points, signals, power, drainage pumps,",
+    "startMs": 32928,
+    "endMs": 36693,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "and platform doors.",
+    "startMs": 36694,
+    "endMs": 37969,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "Next, locate station work by name or code.",
+    "startMs": 39646,
+    "endMs": 42821,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "A single serving line fills automatically;",
+    "startMs": 43427,
+    "endMs": 45938,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "interchanges require an explicit line choice.",
+    "startMs": 45939,
+    "endMs": 48824,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "Review the repair, duration, required skills,",
+    "startMs": 50625,
+    "endMs": 53486,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "crew size, priority, deadline, and location.",
+    "startMs": 53487,
+    "endMs": 56739,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "Clear station-line contradictions are rejected before creation.",
+    "startMs": 57164,
+    "endMs": 60002,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "Generate a modeled proposal.",
+    "startMs": 61627,
+    "endMs": 63206,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "OR-Tools checks qualified crew, shared time,",
+    "startMs": 63655,
+    "endMs": 66084,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "deadlines, location conflicts, and approved commitments together.",
+    "startMs": 66085,
+    "endMs": 69647,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "The Gantt and exact-value table show who works",
+    "startMs": 70099,
+    "endMs": 72082,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "when; conflicts stay visible.",
+    "startMs": 72083,
+    "endMs": 73996,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "A proposal never approves itself.",
+    "startMs": 75632,
+    "endMs": 77604,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "The maintenance chief reviews it,",
+    "startMs": 78090,
+    "endMs": 79792,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "records a decision, and approves execution.",
+    "startMs": 79793,
+    "endMs": 82483,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "Controlled status updates and audit history follow the",
+    "startMs": 82972,
+    "endMs": 85363,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "work.",
+    "startMs": 85364,
+    "endMs": 85968,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "In the labelled synthetic specialist case,",
+    "startMs": 87641,
+    "endMs": 90010,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "requested slots place one of two repairs.",
+    "startMs": 90018,
+    "endMs": 92671,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "First available also places one of two.",
+    "startMs": 93235,
+    "endMs": 95625,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "Joint planning finds two of two while preserving",
+    "startMs": 96192,
+    "endMs": 98316,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "the same fixed inspection.",
+    "startMs": 98317,
+    "endMs": 99875,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "Optional validated Gemini can interpret free text,",
+    "startMs": 101633,
+    "endMs": 104283,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "while core rules work without it.",
+    "startMs": 104284,
+    "endMs": 105993,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "Ngeebula keeps constraint checks clear,",
+    "startMs": 106485,
+    "endMs": 108571,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "proposals reviewable, and approval human,",
+    "startMs": 108580,
+    "endMs": 111001,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": "from first request through execution.",
+    "startMs": 111002,
+    "endMs": 112950,
+    "timestampMs": null,
+    "confidence": null
+  }
+]

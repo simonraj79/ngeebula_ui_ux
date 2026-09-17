@@ -1,0 +1,21 @@
+{
+  "source_repository": "https://github.com/aochinwen/NebulaX-Hackathon-ProblemStatement",
+  "source_commit": "16526c02579c7f37e54eaaa42a4cc6d4ceb19994",
+  "retrieved_on": "2026-09-17",
+  "files": {
+    "PS1_README.md": {"bytes": 28058, "sha256": "b4b6e2072ea27dfe40d785b80b606e9297392df43124f69316e27b3b5c254d0f"},
+    "01_data/01_LINES.csv": {"bytes": 49, "sha256": "b6e60b0e7726e4266efd059bf5061b3b3a2c9825ae7dd85a6431f41b81b383e7"},
+    "01_data/02_STATIONS.csv": {"bytes": 282, "sha256": "4a27d6508defd03e8c833133b523390ac8850a1c1717f309033e40f364720e24"},
+    "01_data/03_SECTORS.csv": {"bytes": 649, "sha256": "643fdb2bd317126b42572fafcce8f8108008e8e9c7b71c08dfd31cec11c3ee34"},
+    "01_data/04_LOCATION_SUPPLY.csv": {"bytes": 3210, "sha256": "9d8a92d6ffd340f40dae28302ed6f88958f8661e2b046bb6b4e0b79c385be1e6"},
+    "01_data/05_BUFFER_LOCATION.csv": {"bytes": 114, "sha256": "4b9fe7fd6a1f9128bd6e83405496dc64a8028f997bb1fcd28355582a6d554de0"},
+    "01_data/06_PARAMETERS.csv": {"bytes": 52, "sha256": "9400b7b082069c56b8cae85d56994cf06fe08ae54fcd116ff6edc890034cc8e6"},
+    "01_data/07_PROJECT_DETAILS.csv": {"bytes": 1583, "sha256": "393f0dcc7e7b9a54f0eff12eb0dd0122dbd74f4b4b8b73b7676f9f232fb8a4c7"},
+    "01_data/08_ACTIVITY_DETAILS.csv": {"bytes": 4174, "sha256": "6a1ef90cd3bed93a8970ef49454e9c02e0c1df93ce8e0f0f4b071563cfb43e30"},
+    "02_references/network_diagram.svg": {"bytes": 11835, "sha256": "3508d1ba6eaa5dd3351a9c2f23d5fa975809d63de24b38f98aba3a0630d61e98"},
+    "02_references/PS1.drawio": {"bytes": 141135, "sha256": "aa10dc61d8764be4ab16968071d2610a9ea9bb4dc5e5c2b62eb0baab297bf248"},
+    "03_submission_sample/RESULTS.csv": {"bytes": 345, "sha256": "b815b93c64cd429c1cd000da71e364f3bd5198356ad88b2abaf58d00ffa422cc"},
+    "03_submission_sample/SCHEDULE_ACCESS.csv": {"bytes": 2706, "sha256": "fef1f07f28819804c82c8051d282fc332bb1094f24d5ebeb799c23bcbf22c843"},
+    "03_submission_sample/SCHEDULE_OCCUPANCY.csv": {"bytes": 26056, "sha256": "efd33d33573d722db3f87e8d2bbc9af6fe7b6deaab504e8d97f2d7ac58116cf3"}
+  }
+}

@@ -1,106 +1,82 @@
-# Ngeebula · Rail maintenance planning prototype
+# Ngeebula Â· Engineering access planning
 
-Team Ngeebula's local prototype brings requests, engineer allocation, priority, scheduling, review, and progress into one operations dashboard.
+A React cockpit for **NebulaX Problem Statement 1 (PS1)**: fit every activity into a constrained railway engineering-access programme, then compare protecting supply, protecting dates, or balancing both. A separate maintenance workflow retains requests, qualified crew allocation, proposals, approval and execution.
 
-## Run locally on Windows
+[Open the app](https://ngeebula-ui-ux.onrender.com/) Â· [Pinned problem statement](https://github.com/aochinwen/NebulaX-Hackathon-ProblemStatement/tree/16526c02579c7f37e54eaaa42a4cc6d4ceb19994/PS1) Â· [Documentation](docs/README.md)
 
-Use Python 3.12. From the repository root:
+## Exact supplied dataset
+
+The app loads the **same eight CSVs** in the public PS1 pack, identified by the project owner as SMRT-supplied. Files are preserved byte-for-byte at commit `16526c02579c7f37e54eaaa42a4cc6d4ceb19994`, with SHA-256 hashes in [the manifest](data/ps1/MANIFEST.json).
+
+| Measure | Supplied instance |
+|---|---:|
+| Lines / station records / sectors | 2 / 20 / 18 |
+| Locations | 76 |
+| Contracts / activities | 14 / 54 |
+| Required work units | 192 |
+| Nominal horizon | 30 weeks, starting 4 January 2027 |
+
+Alpha/Beta and H01/H02 remain the exact challenge identifiers. The public source does not establish whether these records reproduce live operations. The dummy crew roster, LTA station reference and invented repair examples belong to the separate maintenance workflow. [Dataset audit](docs/PS1_DATA_AUDIT.md).
+
+## Workflow
+
+1. **Overview:** inspect demand counts and the supplied network.
+2. **Plan access:** choose A (strict supply, no ECLO), B (strict planned dates), or C (limited extra supply and bounded ECLO).
+3. **Schedule:** review the weekly Gantt, exact rows, delays and additional access. Filters change the view, not the demand being scheduled.
+4. **Export:** download the three required CSVs in a ZIP; download local validation and physical-night evidence separately.
+5. **What-if:** reduce capacity at a location/week and compare the resulting changes.
+6. **Data & imports:** validate and load another instance of the eight named CSVs individually or in a ZIP.
+
+```mermaid
+flowchart LR
+    CSV[Eight supplied or uploaded CSVs] --> Audit[Schema and network audit]
+    Audit --> Policy[Scenario A / B / C]
+    Policy --> Plan[Bounded heuristic]
+    Plan --> Check[Independent local validation]
+    Check --> Review[Gantt and trade-offs]
+    Review --> Export[Three CSVs and evidence]
+    Review --> Change[Capacity change]
+    Change --> Plan
+```
+
+Full workload, earliest starts, spans, buffers, Live mirroring/crossover, legal co-sharing, workfronts and weekly allocations are checked. The organisers' **official trackaccess validator is not in the linked pack**. Local checks are not official certification or operational approval. The planner returns a best found plan without proving global optimality. Runs beyond the nominal horizon explicitly assume flat nominal capacities continue; this interpretation needs organiser confirmation. [Rule implementation and limits](docs/PS1_BACKEND_GAP_AUDIT.md).
+
+## Run locally
+
+Use Python 3.12 and Node.js 22.12+ (Node 24 tested), from the root:
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-lock.txt
+npm --prefix web ci
+npm --prefix web run build
+.\.venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
 
-Start the backend in one terminal:
+Open [React](http://127.0.0.1:8000/) or [API docs](http://127.0.0.1:8000/docs). For development, run `npm --prefix web run dev` in a second terminal; Vite proxies the API to port 8000. Restart the API after backend edits or the first frontend build.
 
-```powershell
-Set-Location backend
-..\.venv\Scripts\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000
-```
+No Gemini key is needed for PS1. Optional Gemini interprets unanchored maintenance descriptions only. Put `GEMINI_API_KEY` in the ignored root `.env`, using `.env.example` as a template. Never use a `VITE_` variable for a secret. [Gemini setup](docs/GEMINI_SETUP.md). PS1 inputs are never sent to Gemini implicitly.
 
-Start the frontend in another terminal:
+## Maintenance and legacy features
 
-```powershell
-Set-Location frontend
-..\.venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1 --server.port 8501 --browser.gatherUsageStats false
-```
+**Work requests** provides eight repair shortcuts, station-first line selection, proposals, approval, execution and audit through the existing API. Explicit catalog choices bypass AI. Approved/fixed work remains committed in the crew scheduler. Active incidents require operator procedures before planned corrective work is entered.
 
-Open the [dashboard](http://127.0.0.1:8501) or [interactive API docs](http://127.0.0.1:8000/docs). Stop each terminal's server with Ctrl+C. The frontend defaults to port 8000; change its URL in the sidebar or set `NGEEBULA_API_URL`.
+Fresh SQLite databases load the original dummy roster: 700 source records, 697 after duplicate-email removal. Existing databases are preserved. `frontend/` retains the historical Streamlit interface and advanced legacy views; **React in web/ is the deployed primary UI**. The earlier [stakeholder video](video/README.md) shows the legacy interface, not this PS1 release.
 
-The database is created at `backend/smrt_maintenance.db`. Fresh databases load the original `backend/engineers_db.json`, confirmed by the project owner as dummy data: 700 source records yield 697 engineers after duplicate-email removal. Existing databases are left intact. Local databases and credentials are excluded from Git. Enter requests through the dashboard. `jobs.json` is an example, not an automatically imported schedule.
-
-See the [documentation index](docs/README.md) and [public GitHub preparation guide](docs/PUBLIC_RELEASE.md) for the repository layout, included data, publication checks and attribution.
-
-## Render demo
-
-Open the [hosted Ngeebula dashboard](https://ngeebula-ui-ux.onrender.com).
-
-[Deployment and hosting guide](docs/RENDER_DEPLOYMENT.md). The free Render service runs the public Streamlit dashboard and an internal FastAPI process. It starts with the original dummy roster and an empty job queue. Shared demo work resets on restart; this is not a persistent operational deployment.
-
-## Daily workflow
-
-Start in **Cockpit** to see work needing planning, approval, or attention. **Add work** opens a numbered train/infrastructure schematic with eight familiar assets and labelled buttons. Choose a repair, confirm its details, then enter location/deadline and review. **Describe another issue** retains free-text intake. Explicit catalog selections are preserved by the backend; Gemini is used only for unanchored free-text assessment.
-
-Choose **See how a repair fits** for a read-only worked example. Three approved preventive jobs stay fixed while the real solver tries to insert a 45-minute corrective repair. Compare a feasible deadline with one that leaves no available slot. All example jobs, crew and durations are synthetic; the example creates no live record and makes no Gemini call.
-
-Choose **Compare approaches & savings** for the three-way showcase: keep requested slots, first available slot, or joint planning with CP-SAT. Run the specialist-conflict, easy-fit and no-capacity situations. Each method receives the same jobs, crew and commitments; the worksheet proxy is not a benchmark of human planners. The timeline shows who works when, and unfinished work stays visible. **Estimated savings** separately compares planning effort, setup cost and running cost under editable assumptions, including negative returns. **Data & evidence** explains available LTA/SMRT information and what needs an operator source. **Explore & learn → Glossary** explains CP-SAT, constraints, first-fit, ROI and other terms in plain English.
-
-This is planned corrective maintenance after operational assessment. Active incidents such as flooding or an unsafe door need the operator's incident process first. The app cannot determine whether a fault is safe to defer. See [the visual repair design plan](docs/VISUAL_REPAIR_PLAN.md) for scope and rationale.
-
-1. **Create a request.** Choose the repair, then search for a station by name or code. Its line is filled in automatically; at an interchange, choose the serving line. For a train/depot worksite, use the separate manual path. Set the deadline in Singapore time and review the requirements.
-2. **Review the crew.** Automatic allocation uses qualified, available engineers. Choose a team explicitly when required. Invalid selections receive an explanation.
-3. **Generate a schedule.** Review preliminary location, qualification and deadline checks, then ask OR-Tools to check all time/crew conflicts together in the next complete 00:30–05:00 Singapore window. Passing preliminary checks does not guarantee feasibility.
-4. **Adjust and approve.** Override priority, crew, or start time with a reason, then approve the reviewed plan. Invalid edits leave the saved plan intact.
-5. **Track execution.** Record status and reasons for problems; consult alerts and audit history.
-6. **Remove errors.** Delete eligible requests with confirmation and a reason. Audit history is retained; active work is protected.
-
-The **About** page explains the problem, scope, workflow and algorithm choices, with Singapore news references and a data-provenance table. It works when the backend is offline. Pending requests remain visible before scheduling.
-
-The workspace uses native Streamlit controls, summaries and tables. Search and filters help focus review; a Gantt chart shows scheduled work, with exact times and crew details in the table. Filtering is a viewing action: schedule generation still considers all eligible requests. Times are displayed in Singapore time.
-
-If a saved request has the wrong location, open **Requests → Correct location**, review the suggested station/line, enter a reason, and save. Corrections clear the proposal, approval and fixed start time so the work can be replanned. Recognized station/line conflicts are rejected before creation and flagged on older records; existing work is never silently corrected. Station options are reconciled with a committed LTA snapshot, not a live network feed. [AGENTS.md](AGENTS.md) records the agreed UX and implementation rules; [the location review](docs/LOCATION_UX_REVIEW.md) explains this refinement.
-
-The lookup contains information from **LTA Train Station Codes and Chinese Names**, accessed **17 September 2026**, under the [Singapore Open Data Licence 1.0](https://datamall.lta.gov.sg/content/datamall/en/SingaporeOpenDataLicence.html). [Source tables](https://datamall.lta.gov.sg/content/datamall/en/static-data.html). The January 2025 station snapshot has 213 codes; reconciliation corrects CE1 to Bayfront and adds DT4 Hume, while nine local-only entries remain unverified. Publication coverage does not establish 2026 service status. See [public-data research and refresh instructions](docs/PUBLIC_DATA_RESEARCH.md).
-
-## What uses AI?
-
-- **Rules and catalogs** provide offline assessment, matching work to skills and suggesting priority. Operators review and override the result.
-- **OR-Tools CP-SAT** is mathematical constraint optimization, not trained predictive ML. It selects feasible times and crews.
-- **Gemini** is optional GenAI for interpreting descriptions. Suggestions are validated; it cannot approve work or bypass constraints.
-
-No API key is needed for the core workflow. Enter your key locally in the repository-root `.env` file as `GEMINI_API_KEY=...`; set `GEMINI_MODEL=gemini-3.8-flash`. The backend reads changes without a restart. Open **Utilities → AI setup**, refresh the snapshot, then choose **Test Gemini connection**. `.env` is ignored by Git; `.env.example` contains only the template. See [setup instructions](docs/GEMINI_SETUP.md). Backend environment variables take precedence; the Windows encrypted store remains an optional fallback. Keep the key out of the frontend, source control, and chat.
-
-The backend falls back to rules when no key is present or model output fails validation. The separate AI test sends synthetic data and reports success only when a real Gemini response passes validation. It creates no job. A configured key alone does not prove that authentication, quota, model access or response validation succeeds; mocked tests do not prove live account access.
-
-No additional predictive ML model is included: this repository has no training dataset or evaluated historical duration model. See [TECH_STACK.md](TECH_STACK.md) for the decision and stable technology contract.
-
-## Architecture
-
-```mermaid
-flowchart LR
-    O[Operations planner] --> UI[Streamlit and Plotly]
-    UI --> API[FastAPI workflow and validation]
-    API --> DB[(SQLite via SQLAlchemy)]
-    Catalog[JSON catalogs] --> API
-    API --> Rules[Catalog and rules]
-    API -. optional .-> Gemini[Gemini suggestions]
-    API --> Solver[OR-Tools CP-SAT]
-    Solver --> API
-    API --> Audit[Audit history]
-```
-
-## Verification
+## Verify and deploy
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -q
+npm --prefix web run build
+.\.venv\Scripts\python.exe scripts/audit_public_release.py
 ```
 
-Tests use isolated databases and credential paths. [IMPLEMENTATION_PLAN.md](docs/plans/IMPLEMENTATION_PLAN.md) records the initial audit; [UX_REFINEMENT_PLAN.md](docs/plans/UX_REFINEMENT_PLAN.md) records the native UI pass; [COCKPIT_AND_AI_PLAN.md](docs/plans/COCKPIT_AND_AI_PLAN.md) records the subsequent simplification and secure AI setup; [TECH_STACK.md](TECH_STACK.md) records the architecture and design rationale; [VALIDATION.md](VALIDATION.md) records verified outcomes. [Research and data provenance](docs/RESEARCH_AND_DATA.md) separates news evidence from prototype assumptions.
+[Validation](VALIDATION.md) Â· [Technology report](TECH_STACK.md) Â· [Migration plan](docs/plans/PS1_REACT_MIGRATION.md) Â· [Render guide](docs/RENDER_DEPLOYMENT.md).
 
-## Prototype limits
+Render serves React and FastAPI from one process/origin. This is a shared public demo without authentication. Imported datasets and runs expire from bounded memory; SQLite work/audits can disappear on restart. Use dummy data and download results. No paid resources are required.
 
-The availability flag assumes an engineer is free for the full maintenance window. Travel, breaks, permits, line authorizations, and physical safety procedures are not modeled. No automatic 30-minute safety buffer is claimed. Planner names are attribution, not authentication. Audit history is retained by the API but is not tamper-proof against direct database changes. This is a planning prototype, not an operational authorization system.
+## Attribution and limits
 
-The original crew roster is dummy data, as confirmed by the project owner; maintenance catalog provenance remains unverified. The attributed LTA snapshot supplies station-reference evidence, not live operations. Example jobs and demonstrations are synthetic. The fixed 00:30–05:00 SGT planning window is a model assumption, not a claim of usable work time in actual operations. This prototype is not endorsed by SMRT or LTA.
+The PS1 pack, commit and sample outputs remain attributed and unchanged. Upstream supplies no explicit dataset/software reuse licence; inclusion follows the project owner's publication request and grants no downstream rights. LTA station references have separate [attribution and licence terms](docs/PUBLIC_DATA_RESEARCH.md). [Singapore news](docs/RESEARCH_AND_DATA.md) supports the problem context, not measured savings or planner certification.
 
-Original repository: [notjerrygoh/ngeebula](https://github.com/notjerrygoh/ngeebula). The supplied README contained this GitHub link and no Google document link.
+Original application: [notjerrygoh/ngeebula](https://github.com/notjerrygoh/ngeebula). This prototype is not endorsed by SMRT or LTA and cannot grant engineering access or certify safe operations.

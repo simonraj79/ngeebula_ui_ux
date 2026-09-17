@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "voice": "en-SG-WayneNeural",
+    "start": 0.55,
+    "duration": 6.912,
+    "tempo": 1.207
+  },
+  {
+    "id": 2,
+    "voice": "en-SG-WayneNeural",
+    "start": 8.55,
+    "duration": 9.912,
+    "tempo": 1.1733
+  },
+  {
+    "id": 3,
+    "voice": "en-SG-WayneNeural",
+    "start": 19.55,
+    "duration": 7.92,
+    "tempo": 1.1514
+  },
+  {
+    "id": 4,
+    "voice": "en-SG-WayneNeural",
+    "start": 28.55,
+    "duration": 9.912,
+    "tempo": 1.217
+  },
+  {
+    "id": 5,
+    "voice": "en-SG-WayneNeural",
+    "start": 39.55,
+    "duration": 9.912,
+    "tempo": 1.0
+  },
+  {
+    "id": 6,
+    "voice": "en-SG-WayneNeural",
+    "start": 50.55,
+    "duration": 9.912,
+    "tempo": 1.2897
+  },
+  {
+    "id": 7,
+    "voice": "en-SG-WayneNeural",
+    "start": 61.55,
+    "duration": 12.912,
+    "tempo": 1.2428
+  },
+  {
+    "id": 8,
+    "voice": "en-SG-WayneNeural",
+    "start": 75.55,
+    "duration": 10.92,
+    "tempo": 1.1758
+  },
+  {
+    "id": 9,
+    "voice": "en-SG-WayneNeural",
+    "start": 87.55,
+    "duration": 12.912,
+    "tempo": 1.0567
+  },
+  {
+    "id": 10,
+    "voice": "en-SG-WayneNeural",
+    "start": 101.55,
+    "duration": 11.928,
+    "tempo": 1.1657
+  }
+]

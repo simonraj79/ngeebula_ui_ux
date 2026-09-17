@@ -1,0 +1,93 @@
+{
+  "02b_asset_buttons.png": {
+    "state": "All eight native clickable asset shortcuts below the schematic",
+    "logical_crop": [
+      300,
+      275,
+      1600,
+      900
+    ],
+    "annotations": {
+      "asset_buttons": [
+        920,
+        585
+      ]
+    }
+  },
+  "03b_fibre_details.png": {
+    "state": "Manual fibre-optic repair details before location selection",
+    "logical_crop": [
+      300,
+      70,
+      1600,
+      900
+    ],
+    "annotations": {
+      "repair_description": [
+        930,
+        470
+      ],
+      "short_title": [
+        930,
+        635
+      ]
+    }
+  },
+  "05b_request_review_details.png": {
+    "state": "Unsaved fibre-optic wizard final review with location, deadline and catalog requirements",
+    "logical_crop": [
+      300,
+      70,
+      1600,
+      900
+    ],
+    "annotations": {
+      "review_card": [
+        930,
+        360
+      ],
+      "requirements": [
+        930,
+        700
+      ]
+    }
+  },
+  "06b_gantt_detail.png": {
+    "state": "Real three-job solver Gantt with exact job labels and time axis",
+    "logical_crop": [
+      300,
+      360,
+      1600,
+      850
+    ],
+    "annotations": {
+      "gantt": [
+        950,
+        680
+      ],
+      "job_labels": [
+        830,
+        710
+      ]
+    }
+  },
+  "07b_approval_review.png": {
+    "state": "Review and approve tab with human decision controls",
+    "logical_crop": [
+      300,
+      70,
+      1600,
+      900
+    ],
+    "annotations": {
+      "job_review": [
+        930,
+        300
+      ],
+      "decision_controls": [
+        930,
+        745
+      ]
+    }
+  }
+}

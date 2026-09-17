@@ -4,7 +4,10 @@
 
 ```text
 backend/          FastAPI, solver, reference catalogs and fictional demo seed
-frontend/         Streamlit interface, theme and local graphics
+web/              Primary React/TypeScript UI and exact npm lock
+frontend/         Retained historical Streamlit interface
+data/ps1/         Byte-identical supplied pack and manifest
+submissions/ps1/  Generated A/B/C CSVs and separate validation evidence
 tests/            Isolated API, UI, data and scheduling tests
 scripts/          Configuration, reference import and publication checks
 docs/             Research, setup, design and publication documentation
@@ -18,6 +21,8 @@ AGENTS.md         Repository-specific coding guidance
 ## Private files stay local
 
 `.gitignore` excludes `.env` and variants, Streamlit secrets, private keys, database files and journals, local exports, environments, logs, process state and caches. `.env.example`, Streamlit theme configuration and public source/reference files remain includable. Git ignore rules do not remove files already committed; the publication audit also checks tracked private paths.
+
+The supplied PS1 pack is pinned and hashed under data/ps1. Preserve its attribution and do not treat the absence of an upstream licence as a reuse grant. Built web/dist and node_modules are ignored.
 
 The original `backend/engineers_db.json` is included at the project owner's explicit request and confirmation that it is dummy data (17 September 2026). Its 700 source records produce 697 engineers after duplicate-email removal. Existing local databases and saved work are never reseeded. The roster is not operational staffing evidence.
 

@@ -10,18 +10,20 @@ from typing import Annotated, Any, Dict, List, Literal, Optional
 
 from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse, PlainTextResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, field_validator, model_validator
 from sqlalchemy.orm import Session
 
 try:
-    from . import database, solver, gemini_config, planning_comparison, lta_reference
+    from . import database, solver, gemini_config, planning_comparison, lta_reference, ps1_api
 except ImportError:
     import database
     import solver
     import gemini_config
     import planning_comparison
     import lta_reference
+    import ps1_api
 
 UTC = dt.timezone.utc
 SGT = dt.timezone(dt.timedelta(hours=8))
@@ -29,7 +31,8 @@ BASE_DIR = Path(__file__).resolve().parent
 PRIORITIES = ("Urgent", "High", "Medium", "Low")
 STATUSES = ("Done", "Error", "Delay", "In progress", "Not started")
 STATUS_COLORS = {"Done": "Green", "Error": "Red", "Delay": "Orange", "In progress": "Blue", "Not started": "Black"}
-LOCAL_UI_ORIGINS = {"http://localhost:8501", "http://127.0.0.1:8501"}
+LOCAL_UI_ORIGINS = {"http://localhost:8501", "http://127.0.0.1:8501",
+                    "http://localhost:5173", "http://127.0.0.1:5173"}
 
 
 def load_json_db(name: str) -> Dict[str, Any]:
@@ -47,9 +50,10 @@ try:
 except (OSError, ValueError, KeyError):
     LTA_REFERENCE = None
 database.init_db()
-app = FastAPI(title="SMRT Railway Maintenance Backend API", version="5.0")
+app = FastAPI(title="Ngeebula PS1 Track Access and Maintenance API", version="6.0")
 app.add_middleware(CORSMiddleware, allow_origins=sorted(LOCAL_UI_ORIGINS),
                    allow_methods=["*"], allow_headers=["*"], allow_credentials=True)
+app.include_router(ps1_api.router)
 
 
 def required_text(value: str) -> str:
@@ -1273,3 +1277,39 @@ def audit_logs(db: Session = Depends(get_db)):
     return [{"id": log.id, "timestamp": from_db(log.timestamp).isoformat(), "action": log.action,
              "details": log.details, "approved_by": log.approved_by}
             for log in db.query(database.AuditLog).order_by(database.AuditLog.timestamp.desc()).all()]
+
+
+@app.get('/healthz', include_in_schema=False)
+def healthz():
+    return {'status': 'ok', 'frontend': 'react',
+            'ps1_dataset_available': (BASE_DIR.parent / 'data/ps1/01_data/08_ACTIVITY_DETAILS.csv').is_file()}
+
+
+@app.get('/_stcore/health', include_in_schema=False)
+def legacy_healthz():
+    # Compatibility while the existing Render health setting migrates to /healthz.
+    return PlainTextResponse('ok')
+
+
+WEB_DIST = BASE_DIR.parent / 'web' / 'dist'
+if (WEB_DIST / 'assets').is_dir():
+    app.mount('/assets', StaticFiles(directory=WEB_DIST / 'assets'), name='react-assets')
+
+
+@app.get('/', include_in_schema=False)
+def react_index():
+    if (WEB_DIST / 'index.html').is_file():
+        return FileResponse(WEB_DIST / 'index.html', headers={'Cache-Control': 'no-cache'})
+    return JSONResponse({'application': 'Ngeebula', 'frontend': 'React development server on port 5173',
+                         'message': 'Build web/ to serve the production frontend from this API.'})
+
+
+@app.get('/{frontend_path:path}', include_in_schema=False)
+def react_navigation(frontend_path: str):
+    # Only app navigation falls back to the index; unknown API/file paths remain 404.
+    if frontend_path.rstrip('/') in {'plan', 'schedule', 'data', 'requests', 'about'}:
+        return react_index()
+    if frontend_path.split('/')[0] in {'ps1', 'jobs', 'engineers', 'catalog', 'schedule',
+            'approval', 'checklist', 'dashboard', 'alerts', 'audit-logs', 'ai', 'api', 'assets'} or '.' in frontend_path:
+        raise HTTPException(404, 'Not found')
+    return react_index()

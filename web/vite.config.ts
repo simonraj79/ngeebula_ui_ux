@@ -1,0 +1,13 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 5173,
+    proxy: Object.fromEntries(
+      ['/ps1', '/jobs', '/catalog', '/approval', '/checklist', '/schedule', '/audit-logs', '/ai', '/engineers', '/dashboard', '/alerts']
+        .map(path => [path, { target: 'http://127.0.0.1:8000', changeOrigin: true }]),
+    ),
+  },
+})
